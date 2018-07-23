@@ -1,0 +1,38 @@
+{
+  "/api/homeData": "/homeData",
+  "/api/playData": "/playData",
+
+  
+  "/screen/merchant": "/list",
+  "/screen/commodity": "/list",
+  "/screen/rhot": "/rhot",
+  "/screen/mguesslike": "/mguesslike",
+  "/screen/lcake": "/lcake",
+
+  "/list/nightlift_list": "/nightlife_list",
+  "/list/nightlift_list1": "/nightlife_list1",
+  "/list/nightlift_list2": "/nightlife_list2",
+  "/list/nightlift_list3": "/nightlife_list3",
+  "/list/spa_list": "/spa_list",
+  "/list/spa_list1": "/spa_list1",
+  "/list/spa_list2": "/spa_list2",
+  "/list/spa_list3": "/spa_list3",
+  "/list/search_list":"/search_list",
+  "/list/search_list1":"/search_list1",
+  "/list/subject_list1":"/subject_list1",
+    "/list/subject_list2":"/subject_list2",
+    "/list/subject_list3":"/subject_list3",
+    "/list/subject_list4":"/subject_list4",
+    "/list/subject_list42":"/subject_list42",
+    "/list/subject_list43":"/subject_list43",
+    "/list/subject_list44":"/subject_list44",
+    "/list/subject_list45":"/subject_list45",
+    "/list/subject_list46":"/subject_list46",
+    "/list/subject_list47":"/subject_list47",
+    "/list/subject_list48":"/subject_list48",
+    "/list/subject_list5":"/subject_list5",
+    "/list/subject_list6":"/subject_list6",
+
+    "/list/comment_list1":"/comment_list1",
+    "/list/comment_list2":"/comment_list2"
+}
