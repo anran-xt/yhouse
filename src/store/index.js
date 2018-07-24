@@ -3,6 +3,20 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+
+
+const actionTypes ={
+    GETDATA : 'getHostData',
+    GETDATA2 : 'getData2'
+}
+
+const mutationTypes = {
+    CHANGETITLE : 'changeTitle',
+    SETDATA : 'setHostData',
+    SETDATA2 : 'setData2'
+}
+
+
 import $ from 'axios'
 
 const state = {
@@ -21,7 +35,16 @@ const state = {
         subDetailLeft:[],
         subDetailRight:[]
     },
-    commentData:{}
+    commentData:{},
+
+    title: '',
+    host:{
+      host_result:{}
+    },
+    event:{
+      event_result:{}
+    },
+    
 }
 const mutations = {
     setData(state, payload){
@@ -41,13 +64,24 @@ const mutations = {
     setScreenType(state,payload){
         state.screenType = payload
       },
-      setScreenData(state,payload){
-        state.shoplist.list = payload[0].data.data.searchData.doc
-        state.shoplist.lcake = payload[1].data.data.searchData.doc
-        state.shoplist.mguesslike = payload[2].data.data.recommendData
-        state.shoplist.rhot = payload[3].data.data.searchData.doc
-        // console.log(payload[0]);
-      }
+    setScreenData(state,payload){
+    state.shoplist.list = payload[0].data.data.searchData.doc
+    state.shoplist.lcake = payload[1].data.data.searchData.doc
+    state.shoplist.mguesslike = payload[2].data.data.recommendData
+    state.shoplist.rhot = payload[3].data.data.searchData.doc
+    // console.log(payload[0]);
+    },
+
+
+    [mutationTypes.CHANGETITLE](state, payload) {
+        state.title = payload
+    },
+    [mutationTypes.SETDATA](state, payload) {
+    state.host = payload
+    },
+    [mutationTypes.SETDATA2](state, payload) {
+    state.event = payload
+    },
 }
 const actions = {
     getData({commit}){
@@ -113,7 +147,40 @@ const actions = {
         .then((result) =>{
           commit("setScreenData",result)  // 所有数据拿到了，调用mutations中的 setScreenData,并将值传送给它
         })
-      }
+    },
+
+
+    async [actionTypes.GETDATA]({commit},payload) {
+        console.log("in")
+  
+        const host_result = $.get('api/host')
+          .then((result) => {
+            console.log(result)
+            return result
+          })
+        Promise.all([host_result])
+          .then((result) => {
+            commit(mutationTypes.SETDATA, {
+              host_result : result[0].data[payload],
+            })
+          })
+    },
+    async [actionTypes.GETDATA2]({commit},payload) {
+    let num = parseInt(payload) - 1
+
+    const event_result = $.get('api/event')
+        .then((result) => {
+        return result
+        })
+
+    Promise.all([event_result])
+        .then((result) => {
+        commit(mutationTypes.SETDATA2, {
+            event_result : result[0].data[num],
+        })
+        })
+    }
+      
 }
 const getters = {
     bannerList:state=>{

@@ -28,7 +28,7 @@
                     <h2>{{item.hostName}}</h2>
                 </div>
                 <div class="pic">
-                    <img :src="item.picUrl" alt="">
+                    <img :src="item.picUrl" alt=""  @click="goDetail" :storeId="item.id" goto="Host">
                     <div class="averageExpense">人均: {{item.price}}元</div>
                 </div>
                 <div class="storeDes">
@@ -42,7 +42,7 @@
                         <div class="tagItem" v-for="(childItem) of item.commentTags" :key="childItem">{{childItem}}</div>
                                      
                     </div>
-                    <a href="javascript:void(0)" class="visit">进店逛逛</a>
+                    <a href="javascript:void(0)" class="visit" @click="goDetail" :storeId="item.id" goto="Host">进店逛逛</a>
                 </div>
 
             </div>
@@ -86,6 +86,15 @@ export default {
     },
     childEnd: function(e) {
       this.$emit("end", e);
+    },
+
+
+    //进店逛逛
+    goDetail(e){
+      let goto = e.target.getAttribute("goto")
+      let storeId =e.target.getAttribute("storeId")
+      console.log(goto,storeId)
+      this.$router.push(goto+"?id="+storeId)
     }
   },
   computed: {
@@ -114,6 +123,7 @@ export default {
           return []
         }
         // console.log(this.$store.state.homeData.extraData.rocket.reserveList[0].content)
+        // console.log(this.$store.state.homeData.doc[5].itemData)
         return this.$store.state.homeData.doc[5].itemData
       }
   }

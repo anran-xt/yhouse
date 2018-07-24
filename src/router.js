@@ -32,6 +32,11 @@ import Subject2Right from './components/SubjectContent-22.vue'
 
 
 
+import Host from './views/Host.vue'
+import Event from './views/Event.vue'
+
+
+
 
 Vue.use(Router)
 
@@ -67,6 +72,21 @@ export default new Router({
 
       ]
     },
+
+
+    {
+      path: '/Host',
+      name: 'Host',
+      component:Host,
+    },
+    {
+      path: '/Event',
+      name: 'Event',
+      component: Event
+    },
+
+
+   
 
     {
       path: '/screen',
@@ -153,5 +173,8 @@ export default new Router({
       name:'SearchStore',
       component:SearchStore,
     },
+
+
+   
   ]
 })

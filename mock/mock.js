@@ -38,6 +38,11 @@ const comment_list1 = require('./comment/data1.json')
 const comment_list2 = require('./comment/data2.json')
 
 
+
+
+const host = require('./host.json')
+const event = require('./event.json')
+
 module.exports = function () {
   return {
     "homeData": homeData,
@@ -73,7 +78,12 @@ module.exports = function () {
     "subject_list6":subject_list6,
 
     "comment_list1":comment_list1,
-    "comment_list2":comment_list2
+    "comment_list2":comment_list2,
+
+
+
+    "host": host,
+    "event": event,
     
   }
 }
