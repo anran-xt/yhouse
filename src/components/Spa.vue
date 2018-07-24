@@ -19,11 +19,11 @@
            </div>
          </div>
          <figure>
-           <img :src="v.picUrl+'m'" alt=""/>
+           <img :src="v.picUrl+'m'" @click="goDetail" :storeId="v.id" goto="Host" alt=""/>
            <span id="price">{{v.priceStr}}</span>
            <figcaption>
              {{v.highLigth}}
-             <p><span>{{v.businessesDistrict}}<b>{{v.cuisineStyle}}</b></span> <a>进店逛逛<i class="yo-ico" v-html="'&#xe620;'"></i></a></p>
+             <p><span>{{v.businessesDistrict}}<b>{{v.cuisineStyle}}</b></span> <a  @click="goDetail" :storeId="v.id" goto="Host">进店逛逛<i class="yo-ico" v-html="'&#xe620;'"></i></a></p>
            </figcaption>
          </figure>
        </router-link>
@@ -69,6 +69,15 @@ export default {
         });
         this.isLodingshow = true;
       }
+    },
+
+
+    //进店逛逛
+    goDetail(e){
+      let goto = e.target.getAttribute("goto")
+      let storeId =e.target.getAttribute("storeId")
+      console.log(goto,storeId)
+      this.$router.push(goto+"?id="+storeId)
     },
 
     stopTouchPro: function(e) {

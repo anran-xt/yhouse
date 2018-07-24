@@ -1,5 +1,5 @@
-[
-  {
+{
+  "18694":{
     "code": "0",
     "data": {
       "address": "后现代城D区15号楼1603室",
@@ -87,7 +87,7 @@
     "recommendAutomatic": [],
     "recommendManual": []
   },
-  {
+  "18651":{
     "code": "0",
     "data": {
       "address": "金源时代购物中心6F",
@@ -175,7 +175,7 @@
     "recommendAutomatic": [],
     "recommendManual": []
   },
-  {
+  "10388":{
     "code": "0",
     "data": {
       "address": "场地1：孙河滨河路1号温榆河 场地2：东坝金盏乡蓝调庄园 场地3：花儿马术庄园 场地4：孙河上辛堡",
@@ -330,7 +330,7 @@
     ],
     "recommendManual": []
   },
-  {
+  "18275":{
     "code": "0",
     "data": {
       "address": "建外SOHO东区2号楼903",
@@ -447,7 +447,7 @@
     "recommendAutomatic": [],
     "recommendManual": []
   },
-  {
+  "17892":{
     "code": "0",
     "data": {
       "address": "金尚嘉园1号楼1单元底商（养正弘文书画院）",
@@ -535,4 +535,4 @@
     "recommendAutomatic": [],
     "recommendManual": []
   }
-]
+}

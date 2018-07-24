@@ -166,7 +166,6 @@ const actions = {
           })
     },
     async [actionTypes.GETDATA2]({commit},payload) {
-    let num = parseInt(payload) - 1
 
     const event_result = $.get('api/event')
         .then((result) => {
@@ -176,7 +175,7 @@ const actions = {
     Promise.all([event_result])
         .then((result) => {
         commit(mutationTypes.SETDATA2, {
-            event_result : result[0].data[num],
+            event_result : result[0].data[payload],
         })
         })
     }

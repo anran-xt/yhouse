@@ -15,7 +15,7 @@
         <div class="activeList">
             <div class="activeItem" v-for="item of activeList" :key="item.picUrl">
                 <a href="javascript:void(0)" class="activeLogo">
-                    <img :src="item.picUrl" alt="">
+                    <img :src="item.picUrl" alt="" @click="goDetail" :activeId="item.id" goto="Event">
                 </a>
                 <div class="activeDes">
                     <h2>{{item.title}}</h2>
@@ -87,6 +87,15 @@ export default {
     },
     childEnd: function(e) {
       this.$emit("end", e);
+    },
+
+
+    //活动详情
+    goDetail(e){
+      let goto = e.target.getAttribute("goto")
+      let storeId =e.target.getAttribute("activeId")
+      console.log(goto,storeId)
+      this.$router.push(goto+"?id="+storeId)
     }
   },
   computed: {

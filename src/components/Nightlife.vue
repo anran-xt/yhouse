@@ -8,7 +8,7 @@
         <router-link tag="li" to="list" v-for=" v of nightlife_lists" :key="v.id">
          <div id="list_title">
            <div id="title_left">
-              <img :src="v.logoUrl" alt="">
+              <img :src="v.logoUrl" alt="" >
            </div>
            <div id="title_right">
              <h2>{{v.hostName}}</h2>
@@ -16,7 +16,7 @@
            </div>
          </div>
          <figure>
-           <img :src="v.picUrl+'m'" alt="">
+           <img :src="v.picUrl+'m'" alt="" @click="goDetail" :storeId="v.id" goto="Host">
            <span id="price">{{v.priceStr}}</span>
            <span id="logo"></span>
            <figcaption>
@@ -83,6 +83,14 @@ export default {
           this.$refs.loadmore.onBottomLoaded();
         }
       });
+    },
+
+    //进店逛逛
+    goDetail(e){
+      let goto = e.target.getAttribute("goto")
+      let storeId =e.target.getAttribute("storeId")
+      console.log(goto,storeId)
+      this.$router.push(goto+"?id="+storeId)
     },
 
     childTouch: function(e) {

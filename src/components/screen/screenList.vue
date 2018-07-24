@@ -7,7 +7,7 @@
             <ul>
                 <li class="item" v-for="v of screemData" :key="v.id+1">
                     <a href="#">
-                        <div><img :src="v.productInfo.hostSharePicUrl" alt=""><span>会员餐厅</span></div> 
+                        <div><img :src="v.productInfo.hostSharePicUrl" alt="" @click="goDetail" :storeId="219764" goto="Host"><span>会员餐厅</span></div> 
                         <div>
                             <h3>{{v.productInfo.shareContent}}</h3>
                             <p>{{v.productInfo.businessesDistrict}}</p>
@@ -42,6 +42,14 @@
         }),
         components:{
             [Spinner.name]:Spinner
+        },
+        methods:{
+            //进店逛逛
+            goDetail(){
+                // let goto = e.target.getAttribute("goto")
+                // let storeId =e.target.getAttribute("storeId")
+                this.$router.push("/Host?id=219764")
+            },
         },
         computed:{
             ...mapState(["shoplist"]),

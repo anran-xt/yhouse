@@ -217,7 +217,12 @@ import Head from "../components/common/ZHU/Head.vue";
 import HostAd from "../components/Host/Host-Ad.vue";
 import Footer from "../components/common/ZHU/Footer.vue";
 import { mapActions, mapState } from "vuex";
-import * as actionTypes from "../store/ZHU/action-types";
+
+const actionTypes ={
+    GETDATA : 'getHostData',
+    GETDATA2 : 'getData2'
+}
+
 export default {
   data: () => ({
     Info: {

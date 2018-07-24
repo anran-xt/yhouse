@@ -20,7 +20,8 @@
       <ul class="clearfix"> 
         <li v-for = "(value,index) in special" :key="index">
           <a>
-            <div class="img" v-bind:style="{backgroundImage: 'url(' + value.contentPic+ ')', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}"></div>
+            <div class="img" v-if = "value.contentPic != null " v-bind:style="{backgroundImage: 'url(' + value.contentPic+ ')', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}"></div>
+            <div class="img" v-else v-bind:style="{backgroundImage: 'url(http://m.yhouse.com/img/bg_logo_b@2x.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '0.8rem auto'}"></div>
             <p>{{value.recommendFood}}</p>
           </a>
         </li>
