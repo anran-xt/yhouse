@@ -1,59 +1,60 @@
 <template>
-    <div class="foodArea" @touchstart="childTouch" @touchmove="childMove" @touchend="childEnd">
-        <!-- 轮播图 -->
-        <div class="homeBanner" @touchstart="stopTouchPro" @touchmove="stopMovePro" @touchend="stopEndPro" >
-            <div class="container">
-                <mt-swipe :auto="2500" class="myswipe" >
-                    <mt-swipe-item v-for="(item, index) of bannerList" :key="index">
-                        <img :src="item.picUrl" alt="">
-                    </mt-swipe-item>                    
-                </mt-swipe>
-            </div>
-        </div>
-        <!-- 活动页 -->
-        <div class="activeArea">
-            <ul>                
-                <li v-for="(item,index) of activeList" :key="index" >
-                    <router-link :to= "activePages[index]"><img :src="item.picUrl" alt=""></router-link>
-                </li>
-            </ul>
-        </div>
-        <!-- 商店列表 -->
-        <div class="storeList">
-            <div class="storeItem" v-for="(item) of storeList" :key="item.logoUrl">
-                <div class="storeHead">
-                    <div class="storeLogo">
-                        <img :src="item.logoUrl" alt="">
-                    </div>
-                    <h2>{{item.hostName}}</h2>
-                </div>
-                <div class="pic">
-                    <img :src="item.picUrl" alt=""  @click="goDetail" :storeId="item.id" goto="Host">
-                    <div class="averageExpense">人均: {{item.price}}元</div>
-                </div>
-                <div class="storeDes">
-                    <div class="storeTitle">{{item.highLigth}}</div>
-                    <div class="addDes">
-                        <div class="address">{{item.businessesDistrict}}</div>
-                        <em>|</em>
-                        <div class="category">{{item.cuisineStyle}}</div>
-                    </div>
-                    <div :class="{tags:item.commentTags!=null}">
-                        <div class="tagItem" v-for="(childItem) of item.commentTags" :key="childItem">{{childItem}}</div>
-                                     
-                    </div>
-                    <a href="javascript:void(0)" class="visit" @click="goDetail" :storeId="item.id" goto="Host">进店逛逛</a>
-                </div>
+      <div class="foodArea"  @touchstart="childTouch" @touchmove="childMove" @touchend="childEnd">
+          <!-- 轮播图 -->
+          <div class="homeBanner" @touchstart="stopTouchPro" @touchmove="stopMovePro" @touchend="stopEndPro" >
+              <div class="container">
+                  <mt-swipe :auto="2500" class="myswipe" >
+                      <mt-swipe-item v-for="(item, index) of bannerList" :key="index">
+                          <img :src="item.picUrl" alt="">
+                      </mt-swipe-item>                    
+                  </mt-swipe>
+              </div>
+          </div>
+          <!-- 活动页 -->
+          <div class="activeArea">
+              <ul>                
+                  <li v-for="(item,index) of activeList" :key="index" >
+                      <router-link :to= "activePages[index]"><img :src="item.picUrl" alt=""></router-link>
+                  </li>
+              </ul>
+          </div>
+          <!-- 商店列表 -->
+          <div class="storeList">
+              <div class="storeItem" v-for="(item) of storeList" :key="item.logoUrl">
+                  <div class="storeHead">
+                      <div class="storeLogo">
+                          <img :src="item.logoUrl" alt="">
+                      </div>
+                      <h2>{{item.hostName}}</h2>
+                  </div>
+                  <div class="pic">
+                      <img :src="item.picUrl" alt=""  @click="goDetail" :storeId="item.id" goto="Host">
+                      <div class="averageExpense">人均: {{item.price}}元</div>
+                  </div>
+                  <div class="storeDes">
+                      <div class="storeTitle">{{item.highLigth}}</div>
+                      <div class="addDes">
+                          <div class="address">{{item.businessesDistrict}}</div>
+                          <em>|</em>
+                          <div class="category">{{item.cuisineStyle}}</div>
+                      </div>
+                      <div :class="{tags:item.commentTags!=null}">
+                          <div class="tagItem" v-for="(childItem) of item.commentTags" :key="childItem">{{childItem}}</div>
+                                      
+                      </div>
+                      <a href="javascript:void(0)" class="visit" @click="goDetail" :storeId="item.id" goto="Host">进店逛逛</a>
+                  </div>
 
-            </div>
-        </div>
-    </div>
+              </div>
+          </div>
+      </div>
 </template>
 
 
 <script>
 // import $ from "axios";
 // import {mapGetters} from "vuex"
+
 export default {
   name: "HeadBar",
   data() {
@@ -126,12 +127,16 @@ export default {
         // console.log(this.$store.state.homeData.doc[5].itemData)
         return this.$store.state.homeData.doc[5].itemData
       }
-  }
+  },
+
+  
 };
 </script>
 <style lang="scss" scoped>
 @import "@/style/usage/core/reset.scss";
-
+#foodWrap{
+  height: 100%;
+}
 .homeWrap {
   height: 100%;
   overflow: scroll;

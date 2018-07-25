@@ -20,24 +20,30 @@
                 </ul>
             </div>
         </div>
-        <router-view @touch="touch" @move="move" @end="end"></router-view>
-        <div class="foot">
-          <p class="loadMore">查看更多</p>
-          <div class="footContent">
-            <div class="footNav">
-                <a href="javascript:void(0)">首页</a>
-                <span>|</span>
-                <a href="javascript:void(0)">订单</a>
-                <span>|</span>              
-                <a href="javascript:void(0)">登录</a>
-            </div>
-            <div class="load">
-              <span class="apple"></span>
-              <span class="andriod"></span>
-            </div>
-            <div class="about">
-              <p>关于我们</p>
-              <p class="copyRight">Copyright YHOUSE mobile</p>
+        <div id="mainWrap">
+          <div id="main">
+            <div>
+              <router-view @touch="touch" @move="move" @end="end"></router-view>
+              <div class="foot">
+                <p class="loadMore">查看更多</p>
+                <div class="footContent">
+                  <div class="footNav">
+                      <a href="javascript:void(0)">首页</a>
+                      <span>|</span>
+                      <a href="javascript:void(0)">订单</a>
+                      <span>|</span>              
+                      <a href="javascript:void(0)">登录</a>
+                  </div>
+                  <div class="load">
+                    <span class="apple"></span>
+                    <span class="andriod"></span>
+                  </div>
+                  <div class="about">
+                    <p>关于我们</p>
+                    <p class="copyRight">Copyright YHOUSE mobile</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -53,6 +59,8 @@
 <!-- </div> -->
 </template>
 <script>
+import BScroll from 'better-scroll'
+
 import LocationFilter from './LocationFilter.vue'
 import Search from './Search.vue'
 
@@ -158,6 +166,14 @@ export default {
   beforeMount:function(){
     let nowIndex = this.homeRout.indexOf(this.$route.path)
     this.nowShow=nowIndex
+  },
+
+  mounted() {
+    // 定义静态属性(state),不会绑定额外的数据
+    // 静态属性特点：不去在模板上渲染
+    this.scroll = new BScroll('#main',{
+      click: true
+    })
   }
   
 };
@@ -165,21 +181,31 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/usage/core/reset.scss";
 
+
+
 .homeWrap {
+  // height: 100%;
+  // overflow: scroll; 
+  // padding-top:.74rem;
+
+  
   height: 100%;
-  overflow: scroll;
-  padding-top:.74rem;
+  @include flexbox();
+  @include flex-direction(column);
   
   .topArea {
     background:#fff;
-    position: fixed;
-    top:0;    
-    z-index: 98;
+    // position: fixed;
+    // top:0;    
+    // z-index: 98;
     width:100%;
     transition:top .2s linear;    
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
     margin-bottom: 0.06rem;
+
+    height:.74rem;
+
     .topSearch {
       @include flexbox();
       @include flex-direction(row);
@@ -260,89 +286,99 @@ export default {
       }
     }
   }
-  .mounted{
-    top:-.45rem;
-  }
-  .foot{
-    .loadMore{
-      height:.42rem;
-      line-height:.42rem;
-      text-align: center;
-      border-top:0.005rem solid #eee;
-      background: #fff;
-      color:#555;
-      font-size:.14rem;
-      &:after{
-        content:"";
-        display: inline-block;
-        width:.15rem;
-        height:.08rem;
-        position: relative;
-        top:-1px;
-        background: url("../../assets/icon_meal@3x.png") no-repeat ;
-        background-size: .4rem auto;
-        margin-left:.05rem;
-      }
+
+  #mainWrap{
+    @include flex();
+    overflow: hidden;
+    width: 100%;
+    #main{
+      height:100%;
     }
-    .footContent{
-      padding:.25rem .25rem;
-      
-      .load{
-        margin:.15rem auto .3rem;
+    .mounted{
+      top:-.45rem;
+    }
+    .foot{
+      .loadMore{
+        height:.42rem;
+        line-height:.42rem;
         text-align: center;
+        border-top:0.005rem solid #eee;
+        background: #fff;
+        color:#555;
+        font-size:.14rem;
         &:after{
           content:"";
-          display: block;
+          display: inline-block;
+          width:.15rem;
+          height:.08rem;
+          position: relative;
+          top:-1px;
+          background: url("../../assets/icon_meal@3x.png") no-repeat ;
+          background-size: .4rem auto;
+          margin-left:.05rem;
+        }
+      }
+      .footContent{
+        padding:.25rem .25rem;
+        
+        .load{
+          margin:.15rem auto .3rem;
+          text-align: center;
+          &:after{
+            content:"";
+            display: block;
+            clear: both;
+          }
+          span{
+            width:1.32rem;
+            height:.4rem;
+            display: inline-block;
+            // float: left;
+            margin:0 .05rem;
+            background-size:100% auto;          
+            background-repeat:  no-repeat;
+          }
+          .apple{
+            background-image: url("../../assets/icon_apple@2x.png")
+          }
+          .andriod{
+            background-image: url("../../assets/icon_android@2x.png")          
+          }
+        }
+        .footNav{
           clear: both;
-        }
-        span{
-          width:1.32rem;
-          height:.4rem;
-          display: inline-block;
-          // float: left;
-          margin:0 .05rem;
-          background-size:100% auto;          
-          background-repeat:  no-repeat;
-        }
-        .apple{
-          background-image: url("../../assets/icon_apple@2x.png")
-        }
-        .andriod{
-          background-image: url("../../assets/icon_android@2x.png")          
-        }
-      }
-      .footNav{
-        clear: both;
-        height:.45rem;
-        line-height: .45rem;
-        text-align: center;
-        a{
-          display: inline-block;
-          width:20%;
-          color:#555;
-          text-decoration: none;
-        }
-        span{
-          margin:0 0.05rem;
+          height:.45rem;
           line-height: .45rem;
-          color:#999;
+          text-align: center;
+          a{
+            display: inline-block;
+            width:20%;
+            color:#555;
+            text-decoration: none;
+          }
+          span{
+            margin:0 0.05rem;
+            line-height: .45rem;
+            color:#999;
+          }
+
+        }
+        .about{
+          height:.36rem;
+          text-align: center;
+          p{
+            color:#555;
+          }
+          .copyRight{
+            color:#ccc;
+            font-size:.1rem;
+          }
         }
 
       }
-      .about{
-        height:.36rem;
-        text-align: center;
-        p{
-          color:#555;
-        }
-        .copyRight{
-          color:#ccc;
-          font-size:.1rem;
-        }
-      }
-
     }
   }
+  
 }
 
 </style>

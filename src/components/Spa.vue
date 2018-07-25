@@ -104,9 +104,18 @@ export default {
   },
   computed: {
     bannerlists(){
+      console.log(this.$store.state.spaData.extraData)
+      if(!this.$store.state.spaData.extraData){
+        return {}
+      }
       return this.$store.state.spaData.extraData.rocket.reserveList[0].content;
     },
     spa_lists(){
+      console.log(this.$store.state.spaData.extraData)
+      
+      if(!this.$store.state.spaData.extraData){
+        return {}
+      }
       return this.$store.state.spaData.doc[3].itemData;
     }
   },

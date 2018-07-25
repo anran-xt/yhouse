@@ -8,7 +8,8 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { CHANGETITLE } from "../../../store/ZHU/mutation-types";
+const CHANGETITLE = "changeTitle"
+// import { CHANGETITLE } from "../../../store/ZHU/mutation-types";
 export default {
   props: ["Info"],
   methods: {

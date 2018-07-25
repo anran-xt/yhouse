@@ -106,11 +106,19 @@ export default {
   },
   computed: {
     bannerimg(){
+      console.log(this.$store.state.spaData.extraData)
+      if(!this.$store.state.spaData.extraData){
+        return {}
+      }
        return this.$store.state.nightlifeData.extraData.rocket.reserveList[0].content[0].picUrl;
     },
     nightlife_lists(){
       Indicator.close();
       this.isShowList = true;
+      console.log(this.$store.state.spaData.extraData)
+      if(!this.$store.state.spaData.extraData){
+        return {}
+      }
       return this.$store.state.nightlifeData.doc[3].itemData;
     }
   },
